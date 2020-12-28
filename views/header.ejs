@@ -1,0 +1,16 @@
+<div class="header">
+    <div class="headerTitle">Second Todo List</div>
+    <% if(user && user.id) {%>
+        <div class="headerItems">
+            <a href='/' class='headerItem'>Home</a>
+            <a href='/todos' class='headerItem'>Todos</a>
+            <a href='/write' class='headerItem'>Write</a>
+            <a href='/auth/logout' class='headerItem'>Logout</a>
+        </div>
+    <%}else { %>
+        <div class="headerItems">
+            <a href='/' class='headerItem'>Home</a>
+            <a href='/Join' class='headerItem'>Join</a>
+        </div>
+    <%}%>
+</div>
