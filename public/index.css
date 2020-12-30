@@ -38,6 +38,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+.todosArea {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo {
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
 .form {
   text-align: center;
 }
