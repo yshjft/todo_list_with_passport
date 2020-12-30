@@ -8,22 +8,30 @@ const tmp = {id:123}
 router.get('/', (req, res, next)=>{
     res.render('index', {
         title: TITLE,
-        user: tmp
+        user: null
     })
 })
 
 router.get('/join', (req, res, next)=>{
     res.render('join', {
         title: TITLE,
-        user: tmp,
+        user: null,
     })
 })
 
 router.get('/todos', (req, res, next)=>{
     res.render('todo', {
         title: TITLE,
-        user: {id:123},
-        todos: tmp
+        user: null,
+        todos: null,
+        urgent: false
+    })
+})
+
+router.get('/write', (req, res, next)=>{
+    res.render('write', {
+        title: TITLE,
+        user: null
     })
 })
 

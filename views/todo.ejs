@@ -7,15 +7,34 @@
 <body>
     <%-include('header')%>
     <div class='todosArea'>
-            <div class='todo'>
-                <div class='todoHeader'>
-                    
+            <div class='todos'>
+                <% if(urgent) { %>
+                <div class='todoHeaderUrgent'>
+                    <div class='todoTitleDateUrgent'>{title}</div>
+                    <div class='todoTitleDateUrgent'>{yyyy.mm.dd}</div>
+                    <div class='todoHeaderBtns'>
+                        <button class='todoHeaderBtnUrgent'>Edit</button>
+                        <button class='todoHeaderBtnUrgent'>Delete</button>
+                    </div>
                 </div>
-                <div>
-                    <div>content</div>
-                    <div>btns</div>
+                <% } else {%>
+                    <div class='todoHeader'>
+                        <div class='todoTitleDate'>{title}</div>
+                        <div class='todoTitleDate'>{yyyy.mm.dd}</div>
+                        <div class='todoHeaderBtns'>
+                            <button class='todoHeaderBtn'>Edit</button>
+                            <button class='todoHeaderBtn'>Delete</button>
+                        </div>
+                    </div>
+                <% }%>
+                <div class="todoWithBtns">
+                    <div class='todo'>{todo}</div>
+                    <div class='btns'>
+                        <button class='btn'>up</button>
+                        <button class='btn'>down</button>
+                    </div>
                 </div>
             </div>
     </div>
 </body>
-</html>
+</html>`
