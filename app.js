@@ -7,6 +7,7 @@ const flash = require('connect-flash')
 require('dotenv').config()
 
 const pageRouter = require('./route/page')
+const authRouter = require('./route/auth')
 
 const app = express()
 
@@ -31,6 +32,7 @@ app.use(session({
 app.use(flash())
 
 app.use('/', pageRouter)
+app.use('/auth', authRouter)
 
 app.use((req, res, next)=>{
     const err = new Error()

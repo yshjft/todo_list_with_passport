@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "hys060578",
+    "database": "TodoList",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "TodoList",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": "hsy060578",
+    "database": "TodoList",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

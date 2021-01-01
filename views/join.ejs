@@ -7,7 +7,7 @@
 <body>
     <%-include('header')%>
     <div class='beforeLogin'>
-        <form class='form'>
+        <form method="POST" action='/auth/join' class='form'>
             <div class='formTitle'>Join</div>
             <div class='formItem'><input name='email' type='email' placeholder="email" required autofocus class='input'/></div>
             <div class='formItem'><input name='password' type='password' placeholder="password" required class='input'/></div>
