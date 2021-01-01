@@ -46,11 +46,13 @@ body {
 .todosArea {
   height: 90%;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .todos {
-  width: 50%;
+  width: 100%;
+}
+.todo {
+  width: 100%;
+  text-align: center;
   border: 1px solid black;
   border-radius: 10px;
 }
@@ -58,6 +60,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 5px;
+  margin: 0;
   border-bottom: 1px solid black;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;

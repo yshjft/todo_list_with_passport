@@ -7,34 +7,48 @@
 <body>
     <%-include('header')%>
     <div class='todosArea'>
-            <div class='todos'>
-                <% if(urgent) { %>
-                <div class='todoHeaderUrgent'>
-                    <div class='todoTitleDateUrgent'>{title}</div>
-                    <div class='todoTitleDateUrgent'>{yyyy.mm.dd}</div>
-                    <div class='todoHeaderBtns'>
-                        <button class='todoHeaderBtnUrgent'>Edit</button>
-                        <button class='todoHeaderBtnUrgent'>Delete</button>
-                    </div>
-                </div>
-                <% } else {%>
-                    <div class='todoHeader'>
-                        <div class='todoTitleDate'>{title}</div>
-                        <div class='todoTitleDate'>{yyyy.mm.dd}</div>
-                        <div class='todoHeaderBtns'>
-                            <button class='todoHeaderBtn'>Edit</button>
-                            <button class='todoHeaderBtn'>Delete</button>
+        <div class='todos'>
+            <% for(let i=0; i<todos.length; i++){ %>
+                <div class='todo'>
+                    <% if(urgent) { %>
+                        <div class='todoHeaderUrgent'>
+                            <div class='todoTitleDateUrgent'>
+                                <%= todos[i].title %>
+                            </div>
+                            <div class='todoTitleDateUrgent'>
+                                <%= todos[i].date %>
+                            </div>
+                            <div class='todoHeaderBtns'>
+                                <button class='todoHeaderBtnUrgent'>Edit</button>
+                                <button class='todoHeaderBtnUrgent'>Delete</button>
+                            </div>
+                        </div>
+                    <% } else {%>
+                        <div class='todoHeader'>
+                            <div class='todoTitleDate'>
+                                <%= todos[i].title %>
+                            </div>
+                            <div class='todoTitleDate'>
+                                <%= todos[i].date %>
+                            </div>
+                            <div class='todoHeaderBtns'>
+                                <button class='todoHeaderBtn'>Edit</button>
+                                <button class='todoHeaderBtn'>Delete</button>
+                            </div>
+                        </div>
+                    <% }%>
+                    <div class="todoWithBtns">
+                        <div class='todo'>
+                            <%= todos[i].text %>
+                        </div>
+                        <div class='btns'>
+                            <button class='btn'>up</button>
+                            <button class='btn'>down</button>
                         </div>
                     </div>
-                <% }%>
-                <div class="todoWithBtns">
-                    <div class='todo'>{todo}</div>
-                    <div class='btns'>
-                        <button class='btn'>up</button>
-                        <button class='btn'>down</button>
-                    </div>
                 </div>
-            </div>
+            <% } %>
+        </div>
     </div>
 </body>
 </html>`

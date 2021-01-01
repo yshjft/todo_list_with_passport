@@ -8,14 +8,19 @@
     <%-include('header')%>
     <% if(user && user.id) { %>
         <div class="afterLogin">
-            HI! {대충 사람이름}
+            HI! <%= user.nick %>
         </div>
     <%}else {%>
         <div class="beforeLogin">
-            <form class='form'>
+            <form method="POST" action='/auth/login' class='form'>
                 <div class='formTitle'>Login</div>
                 <div class='formItem'><input name='email' type='email' placeholder="email" required autofocus class='input'/></div>
                 <div class='formItem'><input name='password' type='password' placeholder="password" required class='input'/></div>
+                <% if(loginError) { %>
+                    <div class='warning'>
+                        <%= loginError %>
+                    </div>
+                <% } %>
                 <div class='formItem'><input type='submit' value='submit' class='submitBtn'/></div>
             </form>
         </div>

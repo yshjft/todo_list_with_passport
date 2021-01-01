@@ -7,11 +7,11 @@
 <body>
     <%-include('header')%>
    <div class='writeArea'>
-       <form class='form'>
+       <form method='post' action='/todo/write' class='form'>
            <div class='formTitle'>Write</div>
-           <div class='formItem'><input type='text' placeholder="Title" class='writeInput'/></div>
-           <div class='formItem'><input type='date' placeholder="Date" class='writeInput'/></div>
-           <div class='formItem'><textarea rows='15' placeholder="Input todo" class='writeText'></textarea></div>
+           <div class='formItem'><input name='title' type='text' placeholder="Title" required class='writeInput'/></div>
+           <div class='formItem'><input name='date' type='date' placeholder="Date" required class='writeInput'/></div>
+           <div class='formItem'><textarea name='text' rows='15' required placeholder="Input todo" class='writeText'></textarea></div>
            <div class='formItem'><input type='submit' class='submitBtn'/></div>
        </form>
    </div>
