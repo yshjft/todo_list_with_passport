@@ -12,7 +12,15 @@
             <div class='formItem'><input name='email' type='email' placeholder="email" required autofocus class='input'/></div>
             <div class='formItem'><input name='password' type='password' placeholder="password" required class='input'/></div>
             <div class='formItem'><input name='nick' type='text' placeholder="nick name" required class='input'/></div>
+            <div>
+                <% if(warning) { %>
+                    <div class='warning'>
+                        <%= warning %>
+                    </div>
+                <% } %>
+            </div>
             <div class='formItem'><input type='submit' value='submit' class='submitBtn'/></div>
+            
         </form>
     </div>
 </body>

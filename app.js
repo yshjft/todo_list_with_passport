@@ -8,8 +8,10 @@ require('dotenv').config()
 
 const pageRouter = require('./route/page')
 const authRouter = require('./route/auth')
+const { sequelize } = require('./models')
 
 const app = express()
+sequelize.sync()
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')

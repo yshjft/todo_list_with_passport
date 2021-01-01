@@ -8,13 +8,14 @@ const tmp = {id:123}
 router.get('/', (req, res, next)=>{
     res.render('index', {
         title: TITLE,
-        user: null
+        user: null,
     })
 })
 
 router.get('/join', (req, res, next)=>{
     res.render('join', {
         title: TITLE,
+        warning: req.flash('alreadyUsed'),
         user: null,
     })
 })

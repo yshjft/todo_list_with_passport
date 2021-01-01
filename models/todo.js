@@ -1,5 +1,3 @@
-const { Sequelize } = require("sequelize/types");
-
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('todo', {
         title: {
