@@ -23,13 +23,29 @@ router.get('/join', isNotLoggedIn, (req, res, next)=>{
 })
 
 router.get('/todos', isLoggedIn, async (req, res, next)=>{
-    const todoList =  await Todo.findAll({where: {userId: req.user.id}})
+    const todoList =  await Todo.findAll({
+        order: [['priority', 'DESC'], ['date', 'ASC']],
+        where: {userId: req.user.id}
+    })
     res.render('todo', {
         title: TITLE,
         user: req.user,
         todos: todoList,
-        urgent: false
     })
+})
+
+router.get('/todo/:id', isLoggedIn, async(req, res, next)=>{
+    try{
+        const todo = await Todo.findOne({where: {id: req.params.id}})
+        res.render('edit', {
+            title: TITLE,
+            user: req.user,
+            todo: todo,
+        })
+    }catch(error){
+        console.error(error)
+        return next(error)
+    }
 })
 
 router.get('/write', isLoggedIn, (req, res, next)=>{

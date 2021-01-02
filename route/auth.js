@@ -3,9 +3,10 @@ const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const {User} =  require('../models')
 const router = express.Router()
+const {isLoggedIn, isNotLoggedIn} = require('./middlewares')
 
 
-router.post('/join', async (req,res,next)=>{
+router.post('/join', isNotLoggedIn, async (req,res,next)=>{
     const {email, password, nick} =  req.body
 
     try{
@@ -27,7 +28,7 @@ router.post('/join', async (req,res,next)=>{
     }
 })
 
-router.post('/login', async(req, res, next)=>{
+router.post('/login', isNotLoggedIn, async(req, res, next)=>{
     // passport.authenticate 미들웨어가 로컬 로그인 전략을 실행한다
     passport.authenticate('local',(authError, user, info)=>{
         if(authError){
@@ -48,7 +49,7 @@ router.post('/login', async(req, res, next)=>{
     })(req, res, next)
 })
 
-router.get('/logout', (req, res, next)=>{
+router.get('/logout', isLoggedIn, (req, res, next)=>{
     req.logout()
     req.session.destroy()
     res.redirect('/')

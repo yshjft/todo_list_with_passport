@@ -10,7 +10,7 @@
         <div class='todos'>
             <% for(let i=0; i<todos.length; i++){ %>
                 <div class='todo'>
-                    <% if(urgent) { %>
+                    <% if(todos[i].priority) { %>
                         <div class='todoHeaderUrgent'>
                             <div class='todoTitleDateUrgent'>
                                 <%= todos[i].title %>
@@ -19,8 +19,8 @@
                                 <%= todos[i].date %>
                             </div>
                             <div class='todoHeaderBtns'>
-                                <button class='todoHeaderBtnUrgent'>Edit</button>
-                                <button class='todoHeaderBtnUrgent'>Delete</button>
+                                <button onclick="location.href='/todo/<%=todos[i].id%>'" class='todoHeaderBtnUrgent'>Edit</button>
+                                <button onclick="deleteTodo('<%=todos[i].id%>')" class='todoHeaderBtnUrgent' >Delete</button>
                             </div>
                         </div>
                     <% } else {%>
@@ -32,8 +32,8 @@
                                 <%= todos[i].date %>
                             </div>
                             <div class='todoHeaderBtns'>
-                                <button class='todoHeaderBtn'>Edit</button>
-                                <button class='todoHeaderBtn'>Delete</button>
+                                <button onclick="location.href='/todo/<%=todos[i].id%>'" class='todoHeaderBtn'>Edit</button>
+                                <button onclick="deleteTodo('<%=todos[i].id%>')" class='todoHeaderBtn'>Delete</button>
                             </div>
                         </div>
                     <% }%>
@@ -42,13 +42,14 @@
                             <%= todos[i].text %>
                         </div>
                         <div class='btns'>
-                            <button class='btn'>up</button>
-                            <button class='btn'>down</button>
+                            <button onclick="priorityUp('<%=todos[i].id%>', '<%=todos[i].priority%>')" class='btn'>up</button>
+                            <button onclick="priorityDown('<%=todos[i].id%>', '<%=todos[i].priority%>')" class='btn'>down</button>
                         </div>
                     </div>
                 </div>
             <% } %>
         </div>
     </div>
+    <script src='../script/todo.js'></script>
 </body>
 </html>`
