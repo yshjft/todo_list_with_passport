@@ -57,3 +57,33 @@ const priorityDown = (id, priority)=>{
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(JSON.stringify(data))
 }
+
+const editTodo = () =>{
+    const id =  document.getElementById('id').value
+    const title = document.getElementById('title').value
+    const date = document.getElementById('date').value
+    const text = document.getElementById('text').value
+
+    const data = {
+        id,
+        title,
+        date,
+        text
+    }
+
+    const xhr =  new XMLHttpRequest()
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState === xhr.DONE){
+            if(xhr.status === 200 || xhr.status === 201){
+                console.log(xhr.responseText)
+                location.href='/todos'
+            }else{
+                console.error(xhr.responseText)
+            }
+        }
+    }
+
+    xhr.open('PUT', '/todo/edit/')
+    xhr.setRequestHeader('Content-Type', 'application/json')
+    xhr.send(JSON.stringify(data))
+}

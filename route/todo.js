@@ -45,7 +45,6 @@ router.put('/down/:id', isLoggedIn, async(req, res, next)=>{
 })
 
 router.put('/edit', isLoggedIn, async(req, res, next)=>{
-    console.log('ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ha ')
     const {id, title, date, text} = req.body
     try {
         await Todo.update({
@@ -55,7 +54,7 @@ router.put('/edit', isLoggedIn, async(req, res, next)=>{
         }, {
             where: {id: id}
         })
-        res.redirect('/todos')
+        res.status(201).send('success')
     }catch(error){
         console.error(error)
         next(error)
