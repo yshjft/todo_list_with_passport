@@ -21,7 +21,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.set('port', process.env.PORT || 8080)
 
-app.use(morgan('dev'))
+// 배포 환경인지 개발 환경인지에 따라 다른 모드 적용
+if(process.env.NODE_ENV === 'production'){
+    app.use(morgan('combined')) //더 많은 사용자 정보를 로그로 남김
+}else{
+    app.use(morgan('dev'))
+}
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
