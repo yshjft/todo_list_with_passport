@@ -5,6 +5,9 @@ const path  = require('path')
 const morgan = require('morgan')
 const flash = require('connect-flash')
 const passport = require('passport')
+const helmet = require('helmet')
+const hpp = require('hpp')
+const RedisStore =  require('connect-redis')(session)
 require('dotenv').config()
 
 const pageRouter = require('./route/page')
@@ -24,6 +27,8 @@ app.set('port', process.env.PORT || 8080)
 // 배포 환경인지 개발 환경인지에 따라 다른 모드 적용
 if(process.env.NODE_ENV === 'production'){
     app.use(morgan('combined')) //더 많은 사용자 정보를 로그로 남김
+    app.use(helmet())
+    app.use(hpp())
 }else{
     app.use(morgan('dev'))
 }
@@ -39,6 +44,12 @@ app.use(session({
         httpOnly: true,
         secure: false,
     },
+    store: new RedisStore({
+        host:process.env.REDIS_HOST,
+        port:proceses.env.REDIS_PORT,
+        pass:process.env.REDIS_PASSWORD,
+        logErrors: true
+    })
 }))
 app.use(flash())
 app.use(passport.initialize()) // req 객체에 passport 설정을 심는다
