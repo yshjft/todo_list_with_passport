@@ -8,6 +8,7 @@ const passport = require('passport')
 const helmet = require('helmet')
 const hpp = require('hpp')
 const RedisStore =  require('connect-redis')(session)
+const redis = require('redis')
 require('dotenv').config()
 
 const pageRouter = require('./route/page')
@@ -36,6 +37,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cookieParser(process.env.COOKIE_SECRET))
+// connect-redis가 4버전 이상일 때 redis 패키지 설치 후 아래와 같이 코드 수정
+const client = redis.createClient({
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    password: process.env.REDIS_PASSWORD,
+    logErrors: true
+})
 app.use(session({
     resave: true,
     saveUninitialized: false,
@@ -44,12 +52,7 @@ app.use(session({
         httpOnly: true,
         secure: false,
     },
-    store: new RedisStore({
-        host:process.env.REDIS_HOST,
-        port:proceses.env.REDIS_PORT,
-        pass:process.env.REDIS_PASSWORD,
-        logErrors: true
-    })
+    store: new RedisStore({client})
 }))
 app.use(flash())
 app.use(passport.initialize()) // req 객체에 passport 설정을 심는다
