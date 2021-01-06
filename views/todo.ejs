@@ -19,8 +19,8 @@
                                 <%= todos[i].date %>
                             </div>
                             <div class='todoHeaderBtns'>
-                                <button onclick="location.href='/todo/<%=todos[i].id%>'" class='todoHeaderBtnUrgent'>Edit</button>
-                                <button onclick="deleteTodo('<%=todos[i].id%>')" class='todoHeaderBtnUrgent' >Delete</button>
+                                <button id='edit' name='<%=todos[i].id%>' class='todoHeaderBtnUrgent'>Edit</button>
+                                <button id='delete' name='<%=todos[i].id%>' class='todoHeaderBtnUrgent' >Delete</button>
                             </div>
                         </div>
                     <% } else {%>
@@ -32,8 +32,8 @@
                                 <%= todos[i].date %>
                             </div>
                             <div class='todoHeaderBtns'>
-                                <button onclick="location.href='/todo/<%=todos[i].id%>'" class='todoHeaderBtn'>Edit</button>
-                                <button onclick="deleteTodo('<%=todos[i].id%>')" class='todoHeaderBtn'>Delete</button>
+                                <button id='edit' name='<%=todos[i].id%>' class='todoHeaderBtn edit'>Edit</button>
+                                <button id='delete' name='<%=todos[i].id%>' class='todoHeaderBtn'>Delete</button>
                             </div>
                         </div>
                     <% }%>
@@ -42,8 +42,8 @@
                             <%= todos[i].text %>
                         </div>
                         <div class='btns'>
-                            <button onclick="priorityUp('<%=todos[i].id%>', '<%=todos[i].priority%>')" class='btn'>up</button>
-                            <button onclick="priorityDown('<%=todos[i].id%>', '<%=todos[i].priority%>')" class='btn'>down</button>
+                            <button id='priorityUp' name='<%=todos[i].id%> <%=todos[i].priority%>' class='btn'>up</button>
+                            <button id='priorityDown' name='<%=todos[i].id%> <%=todos[i].priority%>' class='btn'>down</button>
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
            <div class='formItem'><input id='title' type='text' placeholder="Title" required value='<%=todo.title%>' class='writeInput'/></div>
            <div class='formItem'><input id='date' type='date' placeholder="Date" required value='<%=todo.date%>' class='writeInput'/></div>
            <div class='formItem'><textarea id='text' rows='15' required placeholder="Input todo" class='writeText'><%=todo.text%></textarea></div>
-           <div class='formItem'><input type='button' onClick="editTodo()" class='submitBtn' value='Edit'/></div>
+           <div class='formItem'><input id='editTodo' type='button' class='submitBtn' value='Edit'/></div>
        </form>
    </div>
    <script src='../script/todo.js'></script>
